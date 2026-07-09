@@ -1,13 +1,13 @@
 from google import genai
-from dotenv import load_dotenv
+
 import os
 from mcp.client.stdio import stdio_client,StdioServerParameters
 from mcp import ClientSession
 import streamlit as st
 import asyncio
-load_dotenv()
+
 #Create an Gemini Object.
-client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
+client = genai.Client(api_key=st.secrets['GOOGLE_API_KEY'])
 print("Gemini Connected")
 
 #Streamlit GUI
