@@ -5,6 +5,7 @@ from mcp.client.stdio import stdio_client,StdioServerParameters
 from mcp import ClientSession
 import streamlit as st
 import asyncio
+import sys
 
 #Create an Gemini Object.
 client = genai.Client(api_key=os.getenv("GOOGLE_API_KEY"))
@@ -26,8 +27,8 @@ btn = st.button("Submit Query:")
 
 #Connecting to mcp tools.
 server = StdioServerParameters(
-    command="python",
-    args=['tools.py']
+    command=sys.executable,
+    args=["tools.py"]
 )
 async def connectMCP():
     async with stdio_client(server) as (read,write):
